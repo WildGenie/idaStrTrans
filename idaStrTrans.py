@@ -71,41 +71,41 @@ def translate(ea, srcCoding='', dstLan='zh-cn', dstCoding='gbk'):
             s = u.encode('gbk')
         else:
             s = google_trans(u, dstLan, dstCoding)
-            
+
         if s:
-            Message(dstLan + ' result: ' + s + '\n')
+            Message(f'{dstLan} result: {s}' + '\n')
     return s
 
 # ------------translate funcitons------------
 # ANSI、UTF-8 to Chinese
 def trans2cn():
-    s = translate(ScreenEA())
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA()):
+        MakeRptCmt(ScreenEA(), s)
     
 # ANSI、UTF-8 to English
 def trans2en():
-    s = translate(ScreenEA(), dstLan='en', dstCoding='ascii')
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA(), dstLan='en', dstCoding='ascii'):
+        MakeRptCmt(ScreenEA(), s)
     
 # euc-kr to Chinese 
 def trans_kr2cn():
-    s = translate(ScreenEA(), 'euc-kr')
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA(), 'euc-kr'):
+        MakeRptCmt(ScreenEA(), s)
     
 # euc-kr to English
 def trans_kr2en():
-    s = translate(ScreenEA(), 'euc-kr', 'en', 'ascii')
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA(), 'euc-kr', 'en', 'ascii'):
+        MakeRptCmt(ScreenEA(), s)
     
 # Windows Unicode(UTF-16LE) to Chinese 
 def trans2cn_u():
-    s = translate(ScreenEA(), 'utf-16')
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA(), 'utf-16'):
+        MakeRptCmt(ScreenEA(), s)
     
 # Windows Unicode(UTF-16LE) to English
 def trans2en_u():
-    s = translate(ScreenEA(), 'utf-16', 'en', 'ascii')
-    if s : MakeRptCmt(ScreenEA(), s)
+    if s := translate(ScreenEA(), 'utf-16', 'en', 'ascii'):
+        MakeRptCmt(ScreenEA(), s)
 #-------------------------------------
 
 def add_hot_key(key, str_func):
